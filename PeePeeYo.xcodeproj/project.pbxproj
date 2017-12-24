@@ -8,20 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		1860723D1FE49FDB000C0207 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1860723C1FE49FDB000C0207 /* AppDelegate.swift */; };
-		1860723F1FE49FDB000C0207 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1860723E1FE49FDB000C0207 /* ViewController.swift */; };
 		186072421FE49FDB000C0207 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 186072401FE49FDB000C0207 /* Main.storyboard */; };
 		186072441FE49FDB000C0207 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 186072431FE49FDB000C0207 /* Assets.xcassets */; };
 		186072471FE49FDB000C0207 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 186072451FE49FDB000C0207 /* LaunchScreen.storyboard */; };
+		1860724F1FE4A71B000C0207 /* TestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1860724E1FE4A71B000C0207 /* TestTableViewController.swift */; };
+		186072511FE4B17E000C0207 /* RecordCCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186072501FE4B17E000C0207 /* RecordCCViewController.swift */; };
+		186072531FE4B77B000C0207 /* DataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186072521FE4B77B000C0207 /* DataSet.swift */; };
+		186072551FE4C25E000C0207 /* CCTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186072541FE4C25E000C0207 /* CCTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		186072391FE49FDB000C0207 /* PeePeeYo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PeePeeYo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1860723C1FE49FDB000C0207 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1860723E1FE49FDB000C0207 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		186072411FE49FDB000C0207 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		186072431FE49FDB000C0207 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		186072461FE49FDB000C0207 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		186072481FE49FDB000C0207 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1860724E1FE4A71B000C0207 /* TestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTableViewController.swift; sourceTree = "<group>"; };
+		186072501FE4B17E000C0207 /* RecordCCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCCViewController.swift; sourceTree = "<group>"; };
+		186072521FE4B77B000C0207 /* DataSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSet.swift; sourceTree = "<group>"; };
+		186072541FE4C25E000C0207 /* CCTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,11 +61,14 @@
 			isa = PBXGroup;
 			children = (
 				1860723C1FE49FDB000C0207 /* AppDelegate.swift */,
-				1860723E1FE49FDB000C0207 /* ViewController.swift */,
 				186072401FE49FDB000C0207 /* Main.storyboard */,
+				186072541FE4C25E000C0207 /* CCTableViewCell.swift */,
+				1860724E1FE4A71B000C0207 /* TestTableViewController.swift */,
+				186072501FE4B17E000C0207 /* RecordCCViewController.swift */,
 				186072431FE49FDB000C0207 /* Assets.xcassets */,
 				186072451FE49FDB000C0207 /* LaunchScreen.storyboard */,
 				186072481FE49FDB000C0207 /* Info.plist */,
+				186072521FE4B77B000C0207 /* DataSet.swift */,
 			);
 			path = PeePeeYo;
 			sourceTree = "<group>";
@@ -136,8 +145,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1860723F1FE49FDB000C0207 /* ViewController.swift in Sources */,
 				1860723D1FE49FDB000C0207 /* AppDelegate.swift in Sources */,
+				186072551FE4C25E000C0207 /* CCTableViewCell.swift in Sources */,
+				1860724F1FE4A71B000C0207 /* TestTableViewController.swift in Sources */,
+				186072531FE4B77B000C0207 /* DataSet.swift in Sources */,
+				186072511FE4B17E000C0207 /* RecordCCViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +289,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LX7V9KZM5W;
 				INFOPLIST_FILE = PeePeeYo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kobe.PeePeeYo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -292,6 +305,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LX7V9KZM5W;
 				INFOPLIST_FILE = PeePeeYo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kobe.PeePeeYo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
