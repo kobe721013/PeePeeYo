@@ -10,8 +10,8 @@ import Foundation
 struct EachCC : Codable{
     var time:Date!
     //var cc:Float!
-    var HighP:Int?
-    var LowP:Int?
+    var highP:Int?
+    var lowP:Int?
     var bodyTemperature:Float?
     var heartRate:Int?
     var breathe:Int?

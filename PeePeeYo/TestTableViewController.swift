@@ -134,10 +134,12 @@ class TestTableViewController: UITableViewController {
         let dateTime = eachCC.time
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm:ss"
-        let time = formatter.string(from: dateTime)
+        let time = formatter.string(from:dateTime!) //(from: dateTime)
         
-        cell.ccLabel.text = String(eachCC.cc)
+        
+        //cell.ccLabel.text = String(eachCC.cc)
         cell.timeLabel.text = time
+        cell.highPLabel.text = String(eachCC.highP) ?? "_"
         // Configure the cell...
         
         return cell

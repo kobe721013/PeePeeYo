@@ -143,7 +143,12 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="bodyTemperatureLabel" destination="KEZ-gx-2PT" id="rxz-lu-wIa"/>
+                                    <outlet property="breatheLabel" destination="MCs-EG-arh" id="bZN-qy-Gd4"/>
                                     <outlet property="ccLabel" destination="gV5-9e-2wc" id="06Z-aP-gUZ"/>
+                                    <outlet property="heartRateLabel" destination="mQU-cq-AiI" id="RdG-yt-y69"/>
+                                    <outlet property="highPLabel" destination="gV5-9e-2wc" id="FFq-CV-ccv"/>
+                                    <outlet property="lowPLabel" destination="mQU-cq-AiI" id="Z4b-Lc-nYC"/>
                                     <outlet property="timeLabel" destination="vMM-eR-AW7" id="W2w-pO-h15"/>
                                 </connections>
                             </tableViewCell>
@@ -406,6 +411,13 @@
                             <outlet property="delegate" destination="Qmm-wx-DpU" id="bIj-6N-Wtk"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="bodyTemperature" destination="xkv-5d-GC9" id="HNh-zh-Vrs"/>
+                        <outlet property="breath" destination="Iyw-mj-nzc" id="Gp8-4V-gKp"/>
+                        <outlet property="heartRate" destination="ap4-fv-ZoI" id="nJW-EW-zK5"/>
+                        <outlet property="highP" destination="7hj-NM-iaW" id="8XW-Cm-Thi"/>
+                        <outlet property="lowP" destination="adM-7z-fgp" id="WPh-AO-V5B"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nnw-cu-CRi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -12,6 +12,11 @@ class CCTableViewCell: UITableViewCell {
 
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var ccLabel: UILabel!
+    @IBOutlet weak var bodyTemperatureLabel: UILabel!
+    @IBOutlet weak var highPLabel: UILabel!
+    @IBOutlet weak var lowPLabel: UILabel!
+    @IBOutlet weak var heartRateLabel: UILabel!
+    @IBOutlet weak var breatheLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

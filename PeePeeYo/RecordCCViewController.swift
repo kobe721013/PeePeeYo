@@ -12,6 +12,12 @@ class RecordCCViewController: UITableViewController {
 
     @IBOutlet weak var ccTextField: UITextField!
     var currentCC:EachCC!
+    @IBOutlet weak var bodyTemperature: UITextField!
+    @IBOutlet weak var highP: UITextField!
+    @IBOutlet weak var lowP: UITextField!
+    @IBOutlet weak var heartRate: UITextField!
+    @IBOutlet weak var breath: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,10 +42,13 @@ class RecordCCViewController: UITableViewController {
         formatter.dateFormat = "dd.MM.yyyy"
         let result = formatter.string(from: date)
  */
-        if let ccFloat = Float(ccTextField.text!) {
-            print("EachCC data ok.")
-            currentCC = EachCC(time:date, cc:ccFloat)
-        }
+        
+        //if let ccFloat = Float(ccTextField.text!) {
+        
+        print("EachCC data ok.")
+            //currentCC = EachCC(time:date, cc:Float(bodyTemperature), )
+        currentCC = EachCC(time: date, HighP: Int(highP.text!), LowP: Int(lowP.text!), bodyTemperature: Float(bodyTemperature.text!), heartRate: Int(heartRate.text!), breathe: Int(breath.text!))
+        //}
       
     }
 
