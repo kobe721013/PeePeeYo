@@ -8,6 +8,15 @@
 
 import UIKit
 
+extension Date {
+    func formatDate2String(by format:String) -> String
+    {
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        let someDateTime = formatter.string(from: self)
+        return someDateTime
+    }
+}
 
 class TestTableViewController: UITableViewController {
 
@@ -19,21 +28,11 @@ class TestTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let date = Date()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
-        let someDateTime = formatter.string(from: date)
-        print("testDate=\(someDateTime)")
-        
-        /*
-        let countryCodes = ["BR": "Brazil", "GH": "Ghana", "JP": "Japan"]
-        let index = countryCodes.index(forKey: "JP")
-        let firstKey = Array(countryCodes.keys)[0] // or .first
-        print("firstKey=\(firstKey)")
-        print("Country code for \(countryCodes[index!].value): '\(countryCodes[index!].key)'.")
-        */
-        
+       
+        print("App start Date=\(Date().formatDate2String(by :"yyyy/MM/dd HH:mm:ss"))")
+       //loda data file
         if let daysCC = DayCC.readDaysCCFromFile() {
+            //load data
             self.daysCC = daysCC
             var index = 0
             for dayCC in daysCC {
@@ -42,6 +41,7 @@ class TestTableViewController: UITableViewController {
             }
         }
         else {
+            //no data exist
             self.daysCC = [DayCC]()
         }
     }
@@ -67,38 +67,39 @@ class TestTableViewController: UITableViewController {
 
     @IBAction func eachCCRecordCome(for segue: UIStoryboardSegue){
         print("each CC come")
-        let ccController = segue.source as! RecordCCViewController
-        let eachCC = EachCC(time: Date(), cc: Float(ccController.ccTextField.text!))
-        let dateFormater = DateFormatter()
-        dateFormater.dateFormat = "yyyy/MM/dd"
         
-        let dateString = dateFormater.string(from: eachCC.time)
-        print("dateString = \(dateString)")
+        let ccController = segue.source as! RecordCCViewController
+        let eachCC = ccController.currentCC!//EachCC(time: Date(), cc: Float(ccController.ccTextField.text!))
+        //let dateFormater = DateFormatter()
+        //dateFormater.dateFormat = "yyyy/MM/dd"
+        
+        let dateString = eachCC.time.formatDate2String(by: "yyyy/MM/dd")//dateFormater.string(from: (eachCC?.time)!)
+        print("dateString = \(String(describing: dateString))")
         
         var section = 0
         var row = 0
         if let index = dateIndex[dateString] {
-           
+            //day already has record.
             section = index
             var daycc = daysCC[index]
-            daycc.eachCCArray.append(eachCC)
+            daycc.eachCCArray.insert(eachCC, at: 0)//append(eachCC!)
             daysCC[index] = daycc
-            row = daycc.eachCCArray.count - 1
-             print("already exist. count = \(daycc.eachCCArray.count)")
+            print("already exist. count = \(daycc.eachCCArray.count)")
         }
         else {
+            //day no any record, new section create
             section = dateIndex.count
             dateIndex[dateString] = dateIndex.count
             
             var daycc = DayCC()
             daycc.date = dateString
-            daycc.eachCCArray.append(eachCC)
+            daycc.eachCCArray.insert(eachCC, at:0)
             daysCC.append(daycc)
             print("daysCC count = \(daysCC.count)")
         }
         print("section = \(section), row = \(row)")
-        //let indexPath = IndexPath(row: row, section: section)
         
+        //UI insert one row
         tableView.beginUpdates()
         print("numberOfSections=\(self.tableView.numberOfSections)")
         if self.tableView.numberOfSections < section + 1 {
@@ -108,41 +109,32 @@ class TestTableViewController: UITableViewController {
             //self.tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
             tableView.insertRows(at: [IndexPath(row: row, section: section)], with: .automatic)
         }
-        //tableView.insertRows(at: [IndexPath(row: row, section: section)], with: .automatic)
-        
         tableView.endUpdates()
       
+        //save
+        DayCC.saveToFile(daysCC: daysCC)
         
-        /*
-        eachCCArray.insert(ccController.currentCC, at: 0)//(ccController.currentCC)
-        let indexPath = IndexPath(row: 0, section: 0)
-        tableView.insertRows(at: [indexPath], with: .automatic)
-        */
-        
-        /*
-        let dateTime = ccController.currentCC.time
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyyMMdd_hh:mm"
-        let date = formatter.string(from: dateTime)
-        */
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "ccCell", for: indexPath) as! CCTableViewCell
+        // Configure the cell...
+        configure(cell: cell, indexPath: indexPath)
+        return cell
+    }
+    
+    private func configure(cell:CCTableViewCell, indexPath:IndexPath) {
         
         let eachCC =  daysCC[indexPath.section].eachCCArray[indexPath.row]//eachCCArray[indexPath.row]
-        let dateTime = eachCC.time
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm:ss"
-        let time = formatter.string(from:dateTime!) //(from: dateTime)
+        let time = eachCC.time.formatDate2String(by: "HH:mm")
         
-        
-        //cell.ccLabel.text = String(eachCC.cc)
         cell.timeLabel.text = time
-        cell.highPLabel.text = String(eachCC.highP) ?? "_"
-        // Configure the cell...
-        
-        return cell
+        cell.highPLabel.text = eachCC.highP
+        cell.lowPLabel.text = eachCC.lowP
+        cell.bodyTemperatureLabel.text = eachCC.bodyTemperature
+        cell.breatheLabel.text = eachCC.breathe
+        cell.heartRateLabel.text = eachCC.heartRate
     }
     
  override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? // fixed font style. use custom view (UILabel) if you want something different
@@ -156,6 +148,7 @@ class TestTableViewController: UITableViewController {
         if let headerView = view as? UITableViewHeaderFooterView {
             print("setting header label center")
             headerView.textLabel?.textAlignment = .center
+            //headerView.add
         }
     
     }

@@ -10,11 +10,11 @@ import Foundation
 struct EachCC : Codable{
     var time:Date!
     //var cc:Float!
-    var highP:Int?
-    var lowP:Int?
-    var bodyTemperature:Float?
-    var heartRate:Int?
-    var breathe:Int?
+    var highP:String!
+    var lowP:String!
+    var bodyTemperature:String!
+    var heartRate:String!
+    var breathe:String!
 }
 
 struct DayCC : Codable {

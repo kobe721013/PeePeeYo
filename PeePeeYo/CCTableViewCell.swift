@@ -11,7 +11,7 @@ import UIKit
 class CCTableViewCell: UITableViewCell {
 
     @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var ccLabel: UILabel!
+    //@IBOutlet weak var ccLabel: UILabel!
     @IBOutlet weak var bodyTemperatureLabel: UILabel!
     @IBOutlet weak var highPLabel: UILabel!
     @IBOutlet weak var lowPLabel: UILabel!

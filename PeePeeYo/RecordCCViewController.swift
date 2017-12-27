@@ -10,7 +10,7 @@ import UIKit
 
 class RecordCCViewController: UITableViewController {
 
-    @IBOutlet weak var ccTextField: UITextField!
+    //@IBOutlet weak var ccTextField: UITextField!
     var currentCC:EachCC!
     @IBOutlet weak var bodyTemperature: UITextField!
     @IBOutlet weak var highP: UITextField!
@@ -21,8 +21,13 @@ class RecordCCViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        ccTextField.becomeFirstResponder()
-        ccTextField.keyboardType = .decimalPad
+        //ccTextField.becomeFirstResponder()
+        //ccTextField.keyboardType = .decimalPad
+        bodyTemperature.keyboardType = .decimalPad
+        highP.keyboardType = .decimalPad
+        lowP.keyboardType = .decimalPad
+        heartRate.keyboardType = .decimalPad
+        breath.keyboardType = .decimalPad
         
        
         // Do any additional setup after loading the view.
@@ -47,7 +52,7 @@ class RecordCCViewController: UITableViewController {
         
         print("EachCC data ok.")
             //currentCC = EachCC(time:date, cc:Float(bodyTemperature), )
-        currentCC = EachCC(time: date, HighP: Int(highP.text!), LowP: Int(lowP.text!), bodyTemperature: Float(bodyTemperature.text!), heartRate: Int(heartRate.text!), breathe: Int(breath.text!))
+        currentCC = EachCC(time: date, highP: highP.text!, lowP: lowP.text!, bodyTemperature: bodyTemperature.text!, heartRate: heartRate.text!, breathe: breath.text!)
         //}
       
     }
